@@ -1,50 +1,56 @@
-import { notFound } from "next/navigation"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-// This would typically come from a database or CMS
 const projects = [
   {
-    slug: "e-commerce-platform",
-    title: "E-Commerce Platform",
+    slug: "culerhub-fan-platform",
+    title: "CulerHub",
     description:
-      "A full-stack e-commerce solution built with Next.js, featuring user authentication, payment processing, and an admin dashboard.",
-    longDescription: `This comprehensive e-commerce platform demonstrates modern web development practices and scalable architecture. Built with Next.js 14 and the App Router, it features a responsive design, server-side rendering for optimal SEO, and a seamless user experience.
+      "A MERN stack fan engagement platform for FC Barcelona supporters, featuring real-time match updates, subscription-based premium content, and e-commerce for club merchandise.",
+    longDescription: `CulerHub is a full-stack web application designed to unite FC Barcelona fans worldwide. Built with the MERN stack (MongoDB, Express.js, React, Node.js), it offers a dynamic and scalable platform for fan engagement. The app provides real-time match updates, exclusive subscription-based content, and an integrated e-commerce store for official merchandise.
 
-The platform includes user authentication with NextAuth.js, secure payment processing with Stripe, real-time inventory management, and a comprehensive admin dashboard for managing products, orders, and customers.
-
-Key technical highlights include optimistic UI updates, server actions for form handling, and a robust caching strategy for improved performance.`,
-    image: "/placeholder.svg?height=400&width=800",
-    technologies: ["Next.js", "TypeScript", "Stripe", "MongoDB", "Tailwind CSS", "NextAuth.js"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    date: "2024-01-15",
+Key features include user authentication with JWT, live match commentary using WebSockets, a subscription system powered by Stripe for premium content access, and a responsive UI built with React and Tailwind CSS. The backend leverages MongoDB for flexible data storage and Express.js for efficient API handling. The platform is optimized for performance with server-side rendering and caching strategies to ensure fast load times during high-traffic match days.`,
+    image: "/culerhub-placeholder.svg?height=400&width=800",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "JWT",
+      "Stripe",
+      "WebSocket",
+    ],
+    github: "https://github.com/yourusername/culerhub",
+    demo: "https://culerhub-demo.com",
+    date: "2025-03-10",
     category: "Full Stack",
     features: [
-      "User authentication and authorization",
-      "Secure payment processing with Stripe",
-      "Real-time inventory management",
-      "Admin dashboard with analytics",
-      "Responsive design for all devices",
-      "SEO optimized with server-side rendering",
+      "User authentication with JWT and role-based access",
+      "Real-time match updates using WebSocket integration",
+      "Subscription system for premium fan content with Stripe",
+      "E-commerce store for FC Barcelona merchandise",
+      "Responsive UI for mobile and desktop users",
+      "SEO optimization with server-side rendering",
     ],
     challenges: [
-      "Implementing secure payment processing",
-      "Optimizing database queries for large product catalogs",
-      "Creating a responsive admin interface",
-      "Handling real-time inventory updates",
+      "Implementing real-time match updates with WebSockets for low latency",
+      "Scaling MongoDB queries for high-traffic match days",
+      "Integrating secure payment processing with Stripe",
+      "Designing a responsive and engaging UI for diverse fanbase",
     ],
   },
-]
+];
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug)
+  const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -68,9 +74,13 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <Badge variant="secondary">{project.category}</Badge>
           </div>
 
-          <h1 className="text-4xl lg:text-5xl font-bold text-gradient">{project.title}</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold text-gradient">
+            {project.title}
+          </h1>
 
-          <p className="text-xl text-muted-foreground leading-relaxed">{project.description}</p>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            {project.description}
+          </p>
 
           <div className="flex gap-4">
             <Link href={project.github} target="_blank">
@@ -152,5 +162,5 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

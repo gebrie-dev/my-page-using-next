@@ -32,17 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
+       
           <Navigation />
           {children}
           <Footer />
           <Toaster />
-        </ThemeProvider>
+       
       </body>
     </html>
   );
